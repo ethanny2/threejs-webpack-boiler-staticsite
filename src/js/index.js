@@ -20,13 +20,14 @@ let scene;
 let mesh;
 let stats;
 
-/* TweenjS vars */
+/* TweenjS vars*/
 //const easing = TWEEN.Easing.Quadratic.Out;
 const duration = 8000;
 let cubeRotateTweenA;
 //Used in cubeRotateTweenA to perform a full rotation from 0.
 const rotateCoords = new THREE.Vector3(Math.PI, Math.PI, Math.PI);
 const clock = new THREE.Clock();
+
 
 function init() {
   stats = new Stats();
