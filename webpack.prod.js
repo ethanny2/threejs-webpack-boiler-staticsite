@@ -16,6 +16,15 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.(html)$/,
+        use: {
+          loader: "html-loader",
+          options: {
+            minimize: true
+          }
+        }
+      },
+      {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           {

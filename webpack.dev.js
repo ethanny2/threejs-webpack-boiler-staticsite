@@ -1,16 +1,16 @@
 /* eslint-disable */
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-const path = require('path');
-const webpack = require('webpack');
+const merge = require("webpack-merge");
+const common = require("./webpack.common.js");
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = merge(common, {
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: "development",
+  devtool: "inline-source-map",
   output: {
     // Content hash used for cache bursting
-    filename: 'js/[name].[hash].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "js/[name].[hash].bundle.js",
+    path: path.resolve(__dirname, "dist")
   },
   module: {
     rules: [
@@ -18,17 +18,23 @@ module.exports = merge(common, {
       {
         test: /\.(png|svg|jpe?g|gif|ico)$/i,
         use: {
-          loader: 'file-loader',
+          loader: "file-loader",
           options: {
-            outputPath: 'images/',
-            name: '[name].[hash].[ext]'
+            outputPath: "images/",
+            name: "[name].[hash].[ext]"
           }
+        }
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: "html-loader",
         }
       }
     ]
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
     compress: true,
     hot: true,
     port: 9000
@@ -47,15 +53,15 @@ module.exports = merge(common, {
             packages matched by RegExp. */
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all',
+          name: "vendor",
+          chunks: "all",
           reuseExistingChunk: true
         },
         // Extracts all .css files into a single css file
         styles: {
-          name: 'styles',
+          name: "styles",
           test: /\.css$/,
-          chunks: 'all',
+          chunks: "all",
           enforce: true
         }
       }
