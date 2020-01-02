@@ -1,31 +1,80 @@
+//Roboto mono for main hero screen
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
 
-$backgroundColor: #1d1b1b; 
-
+$fontColor: #eceaea;
+$fontBaseSize: 10px;
+$ctaButtonColor: #5fba57;
+$zindexBase: 0;
+* {
+  box-sizing: border-box;
+}
 html,
 body {
-   height: 100%;
-   width:100%;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: $fontBaseSize;
+}
+/* Elements are sized for mobile first 320x6xx like iPhones and then
+will adjusted for desktops*/
+h1 {
+  font-size: 3.2rem;
+}
+button {
+  font-size: 2.4em;
+  border: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-body{
-    // background-color: $backgroundColor;
-    color: orange;
-    font-family:  'wedgieregular', sans-serif;
-    text-align: center;
-    margin: 0px;
-    overflow: hidden;
+#three-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $zindexBase - 1;
 }
 
-#three-container{
-    position: absolute;
-    top:0px;
-    left:0;
-    width: 100%;
-    height: 100%;
+.hero {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Roboto Mono", monospace;
+  color: $fontColor;
+  z-index: $zindexBase + 1;
 }
 
-#stats{
-    position: absolute;
-    top:0;
-    left:0;
+.intro {
+  z-index: $zindexBase + 1;
+  background: black;
+  color:$fontColor;
+  width: 100%;
+  height: 100%;
+}
+
+.social{
+    border:1px solid red;
+    z-index: 3;
+    color:white;
+}
+#cta {
+  z-index: $zindexBase + 1;
+  width: 45%;
+  height: 10%;
+  font-family: "Roboto Mono", monospace;
+  margin: 0 auto;
+  padding: 1rem;
+  color: $fontColor;
+  background-color: #3dbb3d;
+  border-radius: 0.3em;
+  text-transform: capitalize;
 }
