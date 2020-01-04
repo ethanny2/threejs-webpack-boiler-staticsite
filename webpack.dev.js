@@ -13,25 +13,19 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, "dist")
   },
   module: {
-    rules: [
-      // Loads all image files; no minfication
-      {
-        test: /\.(png|svg|jpe?g|gif|ico)$/i,
-        use: {
-          loader: "file-loader",
-          options: {
-            outputPath: "images/",
-            name: "[name].[hash].[ext]"
-          }
-        }
-      },
-      {
-        test: /\.(html)$/,
-        use: {
-          loader: "html-loader",
-        }
-      }
-    ]
+    // rules: [
+    //   // Loads all image files; no minfication
+    //   {
+    //     test: /\.(png|svg|jpe?g|gif|ico)$/i,
+    //     use: {
+    //       loader: "file-loader",
+    //       options: {
+    //         outputPath: "images/",
+    //         name: "[name].[hash].[ext]"
+    //       }
+    //     }
+    //   },
+    // ]
   },
   devServer: {
     contentBase: "./dist",

@@ -4,8 +4,9 @@ import { WEBGL } from "three/examples/jsm/WebGL.js";
 import * as Stats from "stats.js";
 import * as OfflinePluginRuntime from "offline-plugin/runtime";
 import "../sass/style.scss";
-//import "../static/html/index.html";
-
+import twitter from "../static/images/twitter.png";
+require("../static/html/index.html");
+console.log(twitter);
 
 OfflinePluginRuntime.install();
 
