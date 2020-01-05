@@ -93,7 +93,8 @@ module.exports = {
           loader: "file-loader",
           options: {
             outputPath: "images/",
-            name: "[name].[hash].[ext]"
+            name: "[name].[hash].[ext]",
+            esModule: false
           }
         }
       },
@@ -105,7 +106,8 @@ module.exports = {
           options: {
             outputPath: "audio/",
             // name: "[name].[contenthash].[ext]"
-            name: "[name].[ext]"
+            name: "[name].[ext]",
+            esModule: false
           }
         }
       },
@@ -116,7 +118,8 @@ module.exports = {
           loader: "file-loader",
           options: {
             outputPath: "fonts/",
-            name: "[name].[contenthash].[ext]"
+            name: "[name].[contenthash].[ext]",
+            esModule: false
           }
         }
       },
@@ -127,7 +130,8 @@ module.exports = {
           loader: "file-loader",
           options: {
             outputPath: "models/",
-            name: "[name].[contenthash].[ext]"
+            name: "[name].[contenthash].[ext]",
+            esModule: false
           }
         }
       },
