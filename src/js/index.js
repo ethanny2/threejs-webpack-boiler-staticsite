@@ -1,13 +1,9 @@
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import { WEBGL } from "three/examples/jsm/WebGL.js";
-import * as Stats from "stats.js";
 import * as OfflinePluginRuntime from "offline-plugin/runtime";
 import "../sass/style.scss";
-import twitter from "../static/images/twitter.png";
 require("../static/html/index.html");
-console.log(twitter);
-
 OfflinePluginRuntime.install();
 
 /*Threejs Vars */
@@ -17,14 +13,12 @@ let camera;
 let renderer;
 let scene;
 let mesh;
-let refractor;
-let controls;
 /* TweenjS vars*/
 const duration = 8000;
 let cubeRotateTweenA;
 let outerLayerTween;
 const rotateCoords = new THREE.Vector3(Math.PI, Math.PI, Math.PI);
-const clock = new THREE.Clock();
+// const clock = new THREE.Clock();
 
 function init() {
   container = document.querySelector("#three-container");

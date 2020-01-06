@@ -2,8 +2,11 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
 
 $fontColor: #eceaea;
+$fontColorDark: #1b1919;
 $fontBaseSize: 10px;
-$ctaButtonColor: #5fba57;
+$ctaButtonColor: #3dbb3d;
+$ctaButtonWidth: 16rem;
+$ctaButtonHeight: 5.5rem;
 $zindexBase: 0;
 * {
   box-sizing: border-box;
@@ -28,6 +31,8 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+}
+button:hover, a:hover{
   cursor: pointer;
 }
 
@@ -55,26 +60,42 @@ a {
 
 .intro {
   z-index: $zindexBase + 1;
-  background: black;
-  color:$fontColor;
+  background: #ffffff;
+  color:$fontColorDark;
   width: 100%;
   height: 100%;
 }
 
 .social{
-    border:1px solid red;
     z-index: 3;
     color:white;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    img{
+      padding: 0 .5rem 0 .5rem;
+      width:4rem;
+      cursor: pointer;
+    }
+    position: absolute;
+    top:94%;
+    right:0;
 }
-#cta {
+.cta{
   z-index: $zindexBase + 1;
-  width: 45%;
-  height: 10%;
+  width: $ctaButtonWidth;
+  height: $ctaButtonHeight;
   font-family: "Roboto Mono", monospace;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.2rem;
   color: $fontColor;
-  background-color: #3dbb3d;
-  border-radius: 0.3em;
+  background-color: $ctaButtonColor;
+  border-radius: 1rem;
   text-transform: capitalize;
 }
+.cta-link{
+  width: $ctaButtonWidth;
+  height: $ctaButtonHeight;
+  margin: 0 auto;
+}
+

@@ -7,7 +7,6 @@ const PreloadWebpackPlugin = require("preload-webpack-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 /* For convenience; denotes often used environment info */
 const entry = path.resolve(__dirname, "./src/js/index.js");
-// const vendorEntry = path.resolve(__dirname, "./src/js/vendor.js");
 const nodePath = path.resolve(__dirname, "./node_modules");
 
 module.exports = {
@@ -24,43 +23,9 @@ module.exports = {
   },
   output: {
     // Content hash used for cache bursting
-    filename: "js/[name].[hash].bundle.js",
+    filename: "js/[name].bundle.js",
     path: path.resolve(__dirname, "dist")
   },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     title: "Threejs ES6 Simple Boilerplate",
-  //     filename: "index.html",
-  //     template: "./src/static/html/index.html",
-  //     favicon: "./src/static/images/favicons/favicon.ico",
-  //     // hash: true,
-  //     inject: "head"
-  //   }),
-  //   //Adds rel="preload" to fonts; best practice needs citation
-  //   new PreloadWebpackPlugin({
-  //     rel: "preload",
-  //     as(entry) {
-  //       if (/\.(woff|woff2|ttf|otf)$/.test(entry)) return "font";
-  //     },
-  //     fileWhitelist: [/\.(woff|woff2|ttf|otf)$/],
-  //     //Includes all assets; needs more clarification
-  //     include: "allAssets"
-  //   }),
-  //   //Adds defer to js scripts to speed load times.
-  //   //https://flaviocopes.com/javascript-async-defer/
-  //   new ScriptExtHtmlWebpackPlugin({
-  //     defaultAttribute: "defer"
-  //   }),
-  //   new MiniCssExtractPlugin({
-  //     filename: "css/style.css",
-  //     chunkFilename: "css/style.[id].css"
-  //   })
-  //   //For copying static files not built by webpack
-  //   //Currently only used to copy favicons
-  //   // new CopyPlugin([
-  //   //   { from: './src/static/images/favicons/*/**', to: 'images/favicons/' },
-  //   // ])
-  // ],
   module: {
     rules: [
       // Targets all .js files
@@ -85,55 +50,6 @@ module.exports = {
             }
           }
         ]
-      },
-      // Loads all image files; no minfication
-      {
-        test: /\.(png|svg|jpe?g|gif|ico)$/i,
-        use: {
-          loader: "file-loader",
-          options: {
-            outputPath: "images/",
-            name: "[name].[hash].[ext]",
-            esModule: false
-          }
-        }
-      },
-      // Loads all audio files
-      {
-        test: /\.(ogg|wma|mp3|wav|mpe?g)$/i,
-        use: {
-          loader: "file-loader",
-          options: {
-            outputPath: "audio/",
-            // name: "[name].[contenthash].[ext]"
-            name: "[name].[ext]",
-            esModule: false
-          }
-        }
-      },
-      // Loads all font files
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        use: {
-          loader: "file-loader",
-          options: {
-            outputPath: "fonts/",
-            name: "[name].[contenthash].[ext]",
-            esModule: false
-          }
-        }
-      },
-      // Loads all 3D model files; add more based on your needs
-      {
-        test: /\.(obj|gltf|drc|mtl|glb)$/i,
-        use: {
-          loader: "file-loader",
-          options: {
-            outputPath: "models/",
-            name: "[name].[contenthash].[ext]",
-            esModule: false
-          }
-        }
       },
       // Loads all CSS, SASS AND SCSS files
       {
@@ -165,18 +81,6 @@ module.exports = {
           }
         ]
       },
-      //Load all .html files
-      {
-        test: /\.(html)$/,
-        use: {
-          loader: "html-loader",
-          options: {
-            root: path.resolve(__dirname, "dist"),
-            interpolate: true
-            // attrs: ["img:src", "link:href"]
-          }
-        }
-      }
     ]
   },
   plugins: [
@@ -203,15 +107,10 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: "defer"
     }),
-    new MiniCssExtractPlugin({
-      filename: "css/style.css",
-      chunkFilename: "css/style.[id].css"
-    })
-    //For copying static files not built by webpack
-    //Currently only used to copy favicons
-    // new CopyPlugin([
-    //   { from: './src/static/images/favicons/*/**', to: 'images/favicons/' },
-    // ])
+    // new MiniCssExtractPlugin({
+    //   filename: "css/style.css",
+    //   chunkFilename: "css/style.[id].css"
+    // })
   ],
   optimization: {
     runtimeChunk: "single",
@@ -219,16 +118,5 @@ module.exports = {
     // hash string across builds UNLESS the vendor code has changed.
     // https://webpack.js.org/guides/caching/
     moduleIds: "hashed"
-    // splitChunks: {
-    //   cacheGroups: {
-    //     // Extracts all .css files into a single css file
-    //     styles: {
-    //       name: 'styles',
-    //       test: /\.css$/,
-    //       chunks: 'all',
-    //       enforce: true
-    //     }
-    //   }
-    // }
   }
 };

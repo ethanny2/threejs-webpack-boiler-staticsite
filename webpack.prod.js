@@ -2,12 +2,13 @@ const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var OfflinePlugin = require("offline-plugin");
 const path = require("path");
+
 module.exports = merge(common, {
   mode: "production",
   devtool: "cheap-module-eval-source-map",
-  // Add in extra loader to minify image assets
   output: {
     // Content hash used for cache bursting
     filename: "js/[name].[contenthash].bundle.js",
@@ -16,22 +17,14 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(html)$/,
-        use: {
-          loader: "html-loader",
-          options: {
-            minimize: true
-          }
-        }
-      },
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(png|svg|jpe?g|gif|ico)$/i,
         use: [
           {
             loader: "file-loader",
             options: {
               outputPath: "images/",
-              name: "[name].[contenthash].[ext]"
+              name: "[name].[contenthash].[ext]",
+              esModule: false
             }
           },
           {
@@ -42,10 +35,61 @@ module.exports = merge(common, {
             }
           }
         ]
+      },
+      // Loads all audio files;
+      {
+        test: /\.(ogg|wma|mp3|wav|mpe?g)$/i,
+        use: {
+          loader: "file-loader",
+          options: {
+            outputPath: "audio/",
+            name: "[name].[contenthash].[ext]",
+            esModule: false
+          }
+        }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        use: {
+          loader: "file-loader",
+          options: {
+            outputPath: "fonts/",
+            name: "[name].[contenthash].[ext]",
+            esModule: false
+          }
+        }
+      },
+      // Loads all 3D model files; add more based on your needs
+      {
+        test: /\.(obj|gltf|drc|mtl|glb)$/i,
+        use: {
+          loader: "file-loader",
+          options: {
+            outputPath: "models/",
+            name: "[name].[contenthash].[ext]",
+            esModule: false
+          }
+        }
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: "html-loader",
+          options: {
+            // minimize: true
+            root: path.resolve(__dirname, "dist")
+          }
+        }
       }
     ]
   },
-  plugins: [new OfflinePlugin()],
+  plugins: [
+    new OfflinePlugin(),
+    new MiniCssExtractPlugin({
+      filename: "css/style.[contenthash].css",
+      chunkFilename: "css/style.[contenthash].css"
+    })
+  ],
   optimization: {
     minimizer: [
       // Minify JS; by default applies to all .js files;
@@ -76,12 +120,6 @@ module.exports = merge(common, {
             return `vendor/npm.${packageName.replace("@", "")}`;
           }
         }
-        // vendor: {
-        //     test: /[\\/]node_modules[\\/](three|shader-particle-engine|@tweenjs|promise-polyfill)[\\/]/,
-        //     name: 'vendor',
-        //     chunks: 'all',
-        //     reuseExistingChunk: true
-        //   }
       }
     }
   }
