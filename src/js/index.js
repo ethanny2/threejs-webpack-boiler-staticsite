@@ -2,8 +2,8 @@ import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import { WEBGL } from "three/examples/jsm/WebGL.js";
 import * as OfflinePluginRuntime from "offline-plugin/runtime";
-import "../sass/style.scss";
 import "../../node_modules/typicons.font/src/font/typicons.css";
+import "../sass/style.scss";
 require("../static/html/index.html");
 OfflinePluginRuntime.install();
 

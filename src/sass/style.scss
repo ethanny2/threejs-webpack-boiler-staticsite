@@ -8,6 +8,9 @@ $ctaButtonColor: #1a851a;
 $ctaButtonWidth: 16rem;
 $ctaButtonHeight: 5.5rem;
 $zindexBase: 0;
+$linkVistedColor: #850585;
+$linkHoverColor: #054266;
+$linkDefaultColor: #066aad;
 * {
   box-sizing: border-box;
 }
@@ -28,11 +31,29 @@ button {
   font-size: 2.4em;
   border: none;
 }
+figure {
+  margin: 0;
+}
 a {
   color: inherit;
   text-decoration: none;
 }
-button:hover, a:hover{
+a:link {
+  color: $linkDefaultColor;
+}
+
+/* visited link */
+a:visited {
+  color: $linkDefaultColor;
+}
+
+/* mouse over link */
+a:hover {
+  color: $linkHoverColor;
+}
+
+button:hover,
+a:hover {
   cursor: pointer;
 }
 
@@ -61,33 +82,57 @@ button:hover, a:hover{
 .intro {
   z-index: $zindexBase + 1;
   background: #ffffff;
-  color:$fontColorDark;
+  color: $fontColorDark;
   width: 100%;
-  height: 100%;
-  font-family: 'Open Sans', sans-serif;
-  padding:1.5rem;
-  font-size:1.5em;
-  h2{
-    font-size:2.5rem;
+  height: auto;
+  font-family: "Open Sans", sans-serif;
+  padding: 1.5rem;
+  font-size: 1.5em;
+  h2 {
+    font-size: 2.5rem;
+  }
+  aside {
+    font-size: 1.1rem;
+    padding-top: 1.3rem;
+  }
+}
+.info {
+  p {
+    line-height: 2.3rem;
+    font-size: 1.4rem;
+  }
+  img {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  figure {
+    width: 100%;
+    text-align: center;
+  }
+  figcaption {
+    font-style: italic;
   }
 }
 
-.social{
-    z-index: 3;
-    color:white;
-    display:flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    img{
-      padding: 0 .5rem 0 .5rem;
-      width:4rem;
-      cursor: pointer;
-    }
-    position: absolute;
-    top:94%;
-    right:0;
+.social {
+  z-index: 3;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  img {
+    padding: 0 0.5rem 0 0.5rem;
+    width: 4rem;
+    cursor: pointer;
+  }
+  position: absolute;
+  top: 93%;
+  right: 0;
 }
-.cta{
+.cta {
   z-index: $zindexBase + 1;
   width: $ctaButtonWidth;
   height: $ctaButtonHeight;
@@ -99,17 +144,105 @@ button:hover, a:hover{
   border-radius: 1rem;
   text-transform: capitalize;
 }
-.cta-link{
+.cta-link {
   width: $ctaButtonWidth;
   height: $ctaButtonHeight;
   margin: 0 auto;
 }
 
+.features {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
+.feature {
+  background-color: #e7e6e6;
+  padding: 0.8rem;
+  i {
+    font-size: 4rem;
+    text-align: center;
+    display: block;
+  }
+  p {
+    text-align: center;
+    font-size: 1.8rem;
+    color: black;
+    margin: 0.8rem;
+  }
+}
 
-.feature{
-  i{
-    // width:2rem;
-    // height:2rem;
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (min-width: 320px) {
+}
+/* smartphones, Android phones, landscape iPhone */
+@media (min-width: 480px) {
+  .feature {
+    p {
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
+  }
+}
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (min-width: 600px) {
+  .intro {
+    aside {
+      font-size: 1.2rem;
+    }
+  }
+  .info {
+    img {
+      width: 80%;
+    }
+  }
+}
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width: 801px) {
+  .features {
+    h2 {
+      flex-basis: 100%;
+      min-width: 100%;
+    }
+  }
+  .feature {
+    min-width: 25%;
+    flex-basis: 25%;
+    p {
+      font-size: 1.4rem;
+    }
+  }
+  .social {
+    top: 92%;
+  }
+  .info {
+    img {
+      width: 60%;
+    }
+  }
+}
+/* big landscape tablets, laptops, and desktops */
+@media (min-width: 1024px) {
+  .intro {
+    padding: 2.5rem;
+  }
+  .info {
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  .info {
+    img {
+      width: 45%;
+    }
+  }
+}
+/* hi-res laptops and desktops */
+@media (min-width: 1281px) {
+  .info {
+    img {
+      width: 40%;
+    }
   }
 }
