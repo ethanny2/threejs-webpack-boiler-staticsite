@@ -1,10 +1,10 @@
 //Roboto mono for main hero screen
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
 
-$fontColor: #eceaea;
+$fontColor: #eeeeee;
 $fontColorDark: #1b1919;
 $fontBaseSize: 10px;
-$ctaButtonColor: #3dbb3d;
+$ctaButtonColor: #1a851a;
 $ctaButtonWidth: 16rem;
 $ctaButtonHeight: 5.5rem;
 $zindexBase: 0;
@@ -64,6 +64,12 @@ button:hover, a:hover{
   color:$fontColorDark;
   width: 100%;
   height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  padding:1.5rem;
+  font-size:1.5em;
+  h2{
+    font-size:2.5rem;
+  }
 }
 
 .social{
@@ -99,3 +105,9 @@ button:hover, a:hover{
   margin: 0 auto;
 }
 
+.feature{
+  img{
+    width:2rem;
+    height:2rem;
+  }
+}

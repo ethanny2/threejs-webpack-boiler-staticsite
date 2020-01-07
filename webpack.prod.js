@@ -3,8 +3,9 @@ const common = require("./webpack.common.js");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var OfflinePlugin = require("offline-plugin");
+const OfflinePlugin = require("offline-plugin");
 const path = require("path");
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = merge(common, {
   mode: "production",
@@ -84,11 +85,14 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new OfflinePlugin(),
     new MiniCssExtractPlugin({
       filename: "css/style.[contenthash].css",
       chunkFilename: "css/style.[contenthash].css"
-    })
+    }),
+    new CompressionPlugin({
+      test: /\.(html|css|js)(\?.*)?$/i
+    }),
+    new OfflinePlugin()
   ],
   optimization: {
     minimizer: [
