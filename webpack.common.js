@@ -117,6 +117,17 @@ module.exports = {
     // Vendor code hash (code that is not often changed) keeps its
     // hash string across builds UNLESS the vendor code has changed.
     // https://webpack.js.org/guides/caching/
-    moduleIds: "hashed"
+    moduleIds: "hashed",
+    splitChunks: {
+      cacheGroups: {
+         // Extracts all .css files into a single css file
+         styles: {
+          name: "styles",
+          test: /\.css$/,
+          chunks: "all",
+          enforce: true
+        }
+      }
+    }
   }
 };

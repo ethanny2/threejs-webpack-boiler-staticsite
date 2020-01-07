@@ -5,7 +5,9 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OfflinePlugin = require("offline-plugin");
 const path = require("path");
-const CompressionPlugin = require('compression-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
+const glob = require("glob");
+const PurgecssPlugin = require("purgecss-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -91,6 +93,9 @@ module.exports = merge(common, {
     }),
     new CompressionPlugin({
       test: /\.(html|css|js)(\?.*)?$/i
+    }),
+    new PurgecssPlugin({
+      paths: glob.sync("src/**/*", { nodir: true })
     }),
     new OfflinePlugin()
   ],
