@@ -123,13 +123,14 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  padding:1rem;
   img {
     padding: 0 0.5rem 0 0.5rem;
     width: 4rem;
     cursor: pointer;
   }
   position: absolute;
-  top: 93%;
+  bottom:0;
   right: 0;
 }
 .cta {
@@ -213,9 +214,6 @@ a:hover {
       font-size: 1.4rem;
     }
   }
-  .social {
-    top: 92%;
-  }
   .info {
     img {
       width: 60%;
@@ -229,7 +227,7 @@ a:hover {
   }
   .info {
     p {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
   .info {
