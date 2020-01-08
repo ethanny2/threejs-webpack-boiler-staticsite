@@ -3,11 +3,12 @@ const common = require("./webpack.common.js");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OfflinePlugin = require("offline-plugin");
 const path = require("path");
 const CompressionPlugin = require("compression-webpack-plugin");
 const glob = require("glob");
 const PurgecssPlugin = require("purgecss-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
+const imageminMozjpeg = require("imagemin-mozjpeg");
 
 module.exports = merge(common, {
   mode: "production",
@@ -28,13 +29,6 @@ module.exports = merge(common, {
               outputPath: "images/",
               name: "[name].[contenthash].[ext]",
               esModule: false
-            }
-          },
-          {
-            loader: "image-webpack-loader",
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true // webpack@2.x and newer
             }
           }
         ]
@@ -91,13 +85,24 @@ module.exports = merge(common, {
       filename: "css/style.[contenthash].css",
       chunkFilename: "css/style.[contenthash].css"
     }),
+    new ImageminPlugin({
+      optipng: {
+        optimizationLevel: 6
+      },
+      plugins: [
+        imageminMozjpeg({
+          quality: 100,
+          progressive: true
+        })
+      ]
+    }),
     new CompressionPlugin({
       test: /\.(html|css|js)(\?.*)?$/i
     }),
     new PurgecssPlugin({
       paths: glob.sync("src/**/*", { nodir: true })
-    }),
-    new OfflinePlugin()
+    })
+    // new OfflinePlugin()
   ],
   optimization: {
     minimizer: [

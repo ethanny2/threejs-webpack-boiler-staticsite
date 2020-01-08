@@ -5,7 +5,7 @@ import * as OfflinePluginRuntime from "offline-plugin/runtime";
 import "../../node_modules/typicons.font/src/font/typicons.css";
 import "../sass/style.scss";
 require("../static/html/index.html");
-OfflinePluginRuntime.install();
+// OfflinePluginRuntime.install();
 
 /*Threejs Vars */
 // these need to be accessed inside more than one function so we'll declare them
