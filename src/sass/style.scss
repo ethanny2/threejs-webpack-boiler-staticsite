@@ -101,7 +101,7 @@ a:hover {
     line-height: 2.3rem;
     font-size: 1.4rem;
   }
-  img {
+  video {
     width: 100%;
     display: block;
     text-align: center;
@@ -194,7 +194,7 @@ a:hover {
     }
   }
   .info {
-    img {
+    video {
       width: 80%;
     }
   }
@@ -215,7 +215,7 @@ a:hover {
     }
   }
   .info {
-    img {
+    video {
       width: 60%;
     }
   }
@@ -229,17 +229,16 @@ a:hover {
     p {
       font-size: 2rem;
     }
-  }
-  .info {
-    img {
+    video {
       width: 45%;
     }
   }
+
 }
 /* hi-res laptops and desktops */
 @media (min-width: 1281px) {
   .info {
-    img {
+    video {
       width: 40%;
     }
   }
