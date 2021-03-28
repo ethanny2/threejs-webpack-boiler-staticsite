@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "@tweenjs/tween.js": "^18.5.0",
-    "three": "^0.111.0",
+    "three": "^0.125.0",
     "typicons.font": "^2.0.9"
   }
 }
