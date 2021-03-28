@@ -5,7 +5,7 @@
 ## [https://threejs-webpack-boilerplate.netlify.app/](https://threejs-webpack-boilerplate.netlify.app/)
 
 <p align="center">
-  <img width="460" height="300" src="https://media2.giphy.com/media/Ew5p0EpLDcPuXHhu7J/giphy.gif" alt="Demo gif">
+  <img src="https://media2.giphy.com/media/Ew5p0EpLDcPuXHhu7J/giphy.gif" alt="Demo gif">
 </p>
 
 
